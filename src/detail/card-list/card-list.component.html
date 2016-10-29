@@ -1,0 +1,27 @@
+<div class="column col-md-3">
+    <div class="column-header">
+        <h4 *ngIf="!editingColumn" (click)="editColumn()" >{{ list.name }}</h4>
+        <input
+            autofocus
+            *ngIf="editingColumn"
+            (blur)="updateColumn()"
+            (keyup)="addColumnOnEnter($event)"
+            [(ngModel)]="list.name" />
+    </div>
+    <ul class="card-list" dnd-sortable-container [sortableData]="list.items" dnd-droppable [dropZones]="['card-list']">
+        <li *ngFor="let card of list.items; let i = index"
+            dnd-sortable [sortableIndex]="i"
+            dnd-draggable [dragEnabled]="true" [dropZones]="['card-list']">
+            <card [card]="card"></card>
+        </li>
+    </ul>
+    <div class="add-card">
+        <span *ngIf="!addingCard" (click)="newCard();">Add a card...</span>
+        <input
+            autofocus
+            *ngIf="addingCard"
+            (keyup)="addCardOnEnter($event)"
+            (blur)="addCard()"
+            [(ngModel)]="cardText" />
+    </div>
+</div>

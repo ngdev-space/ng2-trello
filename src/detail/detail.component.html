@@ -1,0 +1,26 @@
+<div *ngIf="board" class="board-title">
+    <span *ngIf="!editingTitle" (click)="editTitle()">{{ board?.name }}</span>
+    <input
+        autofocus
+        *ngIf="editingTitle"
+        (keyup)="blurOnEnter($event)"
+        (blur)="updateBoard()"
+        [(ngModel)]="board.name" />  
+</div>
+<a [routerLink]="['']">Close board</a>
+
+<div *ngIf="board" id="main" >
+    <div *ngFor="let list of board.items">
+        <card-list [list]="list" [boardId]="boardId" (onAddCard)="addCard($event)">
+        </card-list>
+    </div>
+    <div class="add-column">
+        <span *ngIf="!addingColumn" (click)="newColumn();">Add a list...</span>
+        <input
+            autofocus
+            *ngIf="addingColumn"
+            (keyup)="addColumnOnEnter($event)"
+            (blur)="addColumn()"
+            [(ngModel)]="columnName" />
+    </div>
+</div>

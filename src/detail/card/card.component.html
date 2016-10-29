@@ -1,0 +1,9 @@
+<li class="card">
+    <span *ngIf="!editingCard" (click)="editCard()">{{ card.title }}</span>
+    <input
+        autofocus
+        *ngIf="editingCard"
+        (keydown)="blurOnEnter($event)"
+        (blur)="updateCard()"
+        [(ngModel)]="card.title" />
+</li>

@@ -1,0 +1,19 @@
+<div class="boards-wrapper">
+    <h2>Boards</h2>
+    <a href="" (click)="logout()">Logout</a>
+    <div id="boards">
+        <div class="board" *ngFor="let board of boards" [routerLink]="['detail', board.id]">
+            <span class="title">{{ board.name }}</span>
+        </div>
+
+        <div class="board add-board">
+            <span *ngIf="!addingBoard" (click)="newBoard();">Create a new board...</span>
+            <input
+                autofocus
+                *ngIf="addingBoard"
+                (keyup)="addBoardOnEnter($event)"
+                (blur)="addBoard()"
+                [(ngModel)]="boardName" />
+        </div>
+    </div>
+</div>

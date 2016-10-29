@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-5 col-md-3">
+            <div class="form-login">
+            <h4>Welcome back.</h4>
+            <input type="text" #username id="userName" class="form-control input-sm chat-input" placeholder="Username" />
+            <input type="password" #password id="userPassword" class="form-control input-sm chat-input" placeholder="Password" />
+            <div class="wrapper">
+                <span class="group-btn">     
+                    <button class="btn btn-primary" (click)="login(username, password);">Log in</button>
+                </span>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
